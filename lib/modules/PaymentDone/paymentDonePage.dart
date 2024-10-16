@@ -1,0 +1,39 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:sensai/layout/bottom_nav/bottom_nav.dart';
+import 'package:sensai/modules/Schedule/controller/scheduleController.dart';
+
+// Project imports:
+import '../../util/size_config.dart';
+import './widgets/body.dart';
+
+class PaymentDonePage extends StatelessWidget {
+  static String routeName = "/paymentDone";
+
+  const PaymentDonePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // You have to call it on your starting screen
+    SizeConfig().init(context);
+    Get.lazyPut(() => ScheduleController());
+
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: const Icon(Icons.keyboard_arrow_left_rounded),
+          color: Colors.white,
+          iconSize: 30,
+        ),
+      ),
+      backgroundColor: Colors.black,
+      body: const Body(),
+      bottomNavigationBar: BottomNavBar(),
+    );
+  }
+}
