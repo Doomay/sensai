@@ -15,13 +15,22 @@ If you want to use an emulator, ensure you have these installed:
 
 To set up the PostgreSQL database, follow these steps:
 1. Ensure PostgreSQL is installed and running.
-2. Create a new database (e.g., sensai):
+2. Connect to an existing database (postgres): Specify the postgres database explicitly when logging in, like this:
 ```bash
-psql -U your_username -c CREATE DATABASE sensai;
+psql -U your_username -d postgres
 ```
-Use the provided sensai.sql file to create the necessary schema:
+3. Create a new database (e.g., sensai):
 ```bash
-psql -U your_username -d sensai -f sensai.sql
+CREATE DATABASE sensai;
+```
+4. Ensure you're connected to the correct database (in this case, sensai):
+If you're not connected yet, you can connect to it:
+```sql
+\c sensai
+```
+5. Run the SQL file (sensai.sql) using the \i command:
+```sql
+\i /path/to/sensai.sql
 ```
 
 On first startup, run the following commands:
@@ -30,9 +39,10 @@ On first startup, run the following commands:
 2. npm install express pg body-parser cors
 3. flutter clean
 4. flutter build windows
-5. node server.js #NOTE: Change in server.js the settings according to your name/password
+5. node server.js
 ```
-
+# NOTE: 
+Change in server.js the settings according to your name/password
 
 After that you can run the application using an emulator or the web browser.
 
